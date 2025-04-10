@@ -1,9 +1,9 @@
 import streamlit as st
-import openai
+
 
 # 🔐 Replace this with your actual OpenAI API key
-API_KEY = "AIzaSyD7mYwGGCu2MaP84s1IkY8jqjR8hQPPQMk"
-openai.api_key = API_KEY
+
+
 
 # Hardcoded credentials
 CREDENTIALS = {
