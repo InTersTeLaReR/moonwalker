@@ -1,10 +1,5 @@
 import streamlit as st
 
-
-# 🔐 Replace this with your actual OpenAI API key
-
-
-
 # Hardcoded credentials
 CREDENTIALS = {
     "admin": "bgs123",
@@ -40,7 +35,6 @@ def login_page():
 
 def home_page():
     st.title("🏠 Welcome Home")
-
     st.write("You're logged in. You can start learning!")
 
     if st.button("📘 Go to Primary Learning"):
@@ -62,7 +56,6 @@ def primary_learning_page():
             st.session_state.page = "kannada"
     with col3:
         if st.button("🪔 Hindi"):
-
             st.session_state.page = "hindi"
 
     st.markdown("---")
@@ -139,20 +132,12 @@ def section_page(title, image_url):
     st.title(f"📘 {title} Section")
     st.image(image_url, use_column_width=True)
 
-    st.markdown("### 💬 Ask me anything related to this subject")
+    st.markdown("### 💬 Have any doubts or want to explore?")
 
-    query = st.text_input("🔍 Enter your query:")
-    if st.button("Ask"):
+    query = st.text_input("🔍 Enter your query here:")
+    if st.button("Submit"):
         if query:
-            with st.spinner("Thinking..."):
-                try:
-                    response = openai.ChatCompletion.create(
-                        model="gpt-3.5-turbo",
-                        messages=[{"role": "user", "content": query}]
-                    )
-                    st.success(response['choices'][0]['message']['content'])
-                except Exception as e:
-                    st.error(f"❌ Error: {e}")
+            st.info("✅ Thanks for your question! Our mentor will respond soon.")
         else:
             st.warning("⚠️ Please enter a question first.")
 
